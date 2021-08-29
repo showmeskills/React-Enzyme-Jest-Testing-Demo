@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders app should show a app 1`] = `
-.c0 {
+.c1 {
   display: block;
   width: 100%;
   height: 50px;
@@ -10,7 +10,7 @@ exports[`renders app should show a app 1`] = `
   background-color: black;
 }
 
-.c0 .wrap {
+.c1 .wrap {
   position: relative;
   display: block;
   width: 100%;
@@ -19,7 +19,7 @@ exports[`renders app should show a app 1`] = `
   max-width: 980px;
 }
 
-.c0 .wrap .logo {
+.c1 .wrap .logo {
   display: block;
   width: 250px;
   position: absolute;
@@ -30,16 +30,24 @@ exports[`renders app should show a app 1`] = `
   transform: translateY(-50%);
 }
 
-.c0 .wrap .logo img {
+.c1 .wrap .logo img {
   width: 20%;
   margin: 0;
 }
 
+.c0 .main {
+  width: 100%;
+  max-width: 980px;
+  margin: 50px auto 80px;
+}
+
 <div
-  className=""
+  className="c0"
+  data-test="appContainer"
 >
   <div
-    className="c0"
+    className="c1"
+    data-test="headerComponent"
   >
     <div
       className="wrap"
@@ -49,10 +57,30 @@ exports[`renders app should show a app 1`] = `
       >
         <img
           alt="Logo"
+          data-test="logoImg"
           src="http://localhost:3000/assets/2.png"
         />
       </div>
     </div>
   </div>
+  <section
+    className="main"
+  >
+    <div
+      className=""
+      data-test="HeadlineComponent"
+    >
+      <h1
+        data-test="header"
+      >
+        Posts
+      </h1>
+      <p
+        data-test="desc"
+      >
+        Click the button to render posts!
+      </p>
+    </div>
+  </section>
 </div>
 `;

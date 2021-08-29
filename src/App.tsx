@@ -7,10 +7,10 @@ function App() {
   const header = "Posts";
   const desc = "Click the button to render posts!";
   return (
-    <AppContainer>
-      <Header/>
+    <AppContainer data-test="appContainer">
+      <Header />
       <section className="main">
-        <HeaderLine header={header} desc={desc}/>
+        <HeaderLine  header={header} desc={desc}/>
       </section>
     </AppContainer>
   );
