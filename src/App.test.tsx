@@ -7,15 +7,23 @@ import { findByTestAttr } from "./Utils";
 import { Header } from "./components/header";
 import { HeaderLine } from "./components/headerline";
 import { HeaderLineContainer } from "./components/headerline/headerlineStyle";
-import {HeaderContainer} from "./components/header/headerStyle";
+import { HeaderContainer } from "./components/header/headerStyle";
 const setUp = (props = { }) => {
   const component = shallow(<App {...props} />)
   return component;
 }
 
+interface ItempArr {
+  fName: string,
+  lName: string,
+  email: string,
+  age: number,
+  onlineStatus: boolean,
+}
 interface HeaderLineProps {
   header: string;
   desc: string;
+  tempArr: Array<ItempArr>;
 }
 
 const setUpHeaderLine = (props: HeaderLineProps) => {
@@ -48,24 +56,24 @@ describe('renders app', () => {
       const component = shallow(<Header {...props} />) // can test props 
       return component;
     }
-    let component:ShallowWrapper;
+    let component: ShallowWrapper;
     //beforeEach(): before every single test 
     //all declarations should pass function  const component = shallow(<Header {...props}/>) first
-    beforeEach(() => { 
-        component = setUp();
-        
+    beforeEach(() => {
+      component = setUp();
+
     })
 
-    it("should render without errors",()=>{  
-        const container = component.find(HeaderContainer);
-        expect(container.length).toBe(1);
-        const wrapper = findByTestAttr(component,"headerComponent");
-        expect(wrapper.length).toBe(1);
+    it("should render without errors", () => {
+      const container = component.find(HeaderContainer);
+      expect(container.length).toBe(1);
+      const wrapper = findByTestAttr(component, "headerComponent");
+      expect(wrapper.length).toBe(1);
     })
-    it("should render a logo",()=>{
-        //data-test 
-        const logo = findByTestAttr(component,"logoImg");
-        expect(logo.length).toBe(1);
+    it("should render a logo", () => {
+      //data-test 
+      const logo = findByTestAttr(component, "logoImg");
+      expect(logo.length).toBe(1);
     })
   })
 
@@ -78,6 +86,13 @@ describe('renders app', () => {
       const props: HeaderLineProps = {
         header: "Test Header",
         desc: "Test Dest",
+        tempArr: [{
+          fName: "Test fName",
+          lName: "Test lName",
+          email: "Test email",
+          age: 0,
+          onlineStatus: true,
+        }]
       }
       component = setUpHeaderLine(props);
     })
