@@ -1,6 +1,6 @@
-import React from 'react';
 import {Header} from "./components/header";
 import {HeaderLine} from "./components/headerline";
+import {Button} from "./components/button";
 import {AppContainer} from "./AppStyle";
 
 
@@ -22,6 +22,7 @@ function App() {
       <Header />
       <section className="main">
         <HeaderLine  header={header} desc={desc} tempArr={tempArr}/>
+        <Button/>
       </section>
     </AppContainer>
   );

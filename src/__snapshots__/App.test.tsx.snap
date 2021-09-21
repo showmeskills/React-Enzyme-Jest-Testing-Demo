@@ -35,6 +35,19 @@ exports[`renders app should show a app 1`] = `
   margin: 0;
 }
 
+.c2 {
+  border: none;
+  width: 100px;
+  padding: 12px 6px;
+  background-color: pink;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.c3 {
+  list-style-type: none;
+}
+
 .c0 .main {
   width: 100%;
   max-width: 980px;
@@ -81,6 +94,20 @@ exports[`renders app should show a app 1`] = `
         Click the button to render posts!
       </p>
     </div>
+    <button
+      className="c2"
+    >
+      Click Me
+    </button>
+    <ul
+      className="c3"
+    >
+      <li
+        className=""
+      >
+        1
+      </li>
+    </ul>
   </section>
 </div>
 `;

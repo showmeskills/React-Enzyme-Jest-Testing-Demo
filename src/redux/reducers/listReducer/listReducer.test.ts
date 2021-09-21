@@ -1,0 +1,108 @@
+import {ListActionsTypes} from "../../interface/saga-type"
+import { defaultState, listReducer } from "./listReudcer";
+
+describe("list-reducer should", () => {
+    it("return default state", () => {
+        const state = {
+            loading: false,
+            list: [],
+            error: ""
+        };
+        const newState = listReducer(defaultState, {});
+        expect(newState).toEqual(state);
+    })
+    it("return a new state if get lists start",()=>{
+        const state = {
+            loading: true,
+            list: [],
+            error: ""
+        };
+        const newState = listReducer(state,{
+            type:ListActionsTypes.GET_LISTS_START,
+            loading:true,
+            payload:[],
+            error:""
+        });
+        expect(newState).toEqual(state);
+    })
+    it("return a new state if get lists success",()=>{
+        const state = {
+            loading:false,
+            list:[{
+                id:"Test1",
+                userId:"Test1",
+                body:"Test1",
+                title:"Test1",
+            }],
+            error:""
+        }
+        const newState = listReducer(state,{
+            type:ListActionsTypes.GET_LISTS_SUCCESS,
+            loading:state.loading,
+            payload:state.list,
+            error:state.error
+        })
+        expect(newState).toEqual(state);
+    })
+    it("return a new state if get lists failed",()=>{
+        const state = {
+            loading:false,
+            list:[],
+            error:"Test error"
+        }
+        const newState = listReducer(state,{
+            type:ListActionsTypes.GET_SPEC_LIST_FAILED,
+            loading:false,
+            payload:[],
+            error:"Test error",
+        })
+        expect(newState).toEqual(state);
+    })
+    it("return a new state if get spec lists start",()=>{
+        const state = {
+            loading: true,
+            list: [],
+            error: ""
+        };
+        const newState = listReducer(state,{
+            type:ListActionsTypes.GET_SPEC_LIST_START,
+            loading:true,
+            payload:[],
+            error:""
+        });
+        expect(newState).toEqual(state);
+    })
+    it("return a new state if get spec lists success",()=>{
+        const state = {
+            loading: false,
+            list:[{
+                id:"Test1",
+                userId:"Test1",
+                body:"Test1",
+                title:"Test1",
+            }],
+            error: ""
+        };
+        const newState = listReducer(state,{
+            type:ListActionsTypes.GET_SPEC_LIST_START,
+            loading:false,
+            payload:state.list,
+            error:""
+        });
+        expect(newState).toEqual(state);
+    })
+    it("return a new state if get spec lists failed",()=>{
+        const state = {
+            loading: false,
+            list: [],
+            error: "Test error"
+        };
+        const newState = listReducer(state,{
+            type:ListActionsTypes.GET_SPEC_LIST_START,
+            loading:false,
+            payload:[],
+            error:state.error
+        });
+        expect(newState).toEqual(state);
+    })
+})

@@ -11,3 +11,5 @@ export const checkProps = (component:any,expectedProps:{})=>{
     const propsErr = checkPropTypes(component.propTypes,expectedProps,'props',component.name);
     return propsErr;
 }
+
+

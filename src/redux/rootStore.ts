@@ -1,15 +1,18 @@
 import {createStore,applyMiddleware} from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import createSagaMiddleware,{SagaMiddleware} from "redux-saga";
-import {rootReducers} from "./reducers/rootReducers";
+import createSagaMiddleware,{SagaMiddleware} from "@redux-saga/core";
+import {rootReducer} from "./reducers/rootReducer";
+import rootSaga from "./sagas/rootSaga";
+import {AppActions} from "./interface/actions-type";
 import { createLogger } from "redux-logger";
-import {AppActions} from "./interface/actions-types";
-import {rootSagas} from "./sagas/sagas";
+
 const sagaMiddleware = createSagaMiddleware();
 const logger = createLogger();
-export type AppState = ReturnType<typeof rootReducers>;
+export type AppState = ReturnType<typeof rootReducer>
 
 export const store = createStore<AppState,AppActions,{},{}>(
-    rootReducers,
-    composeWithDevTools(applyMiddleware(sagaMiddleware as SagaMiddleware<AppState>,logger )));
-sagaMiddleware.run(rootSagas)
+    rootReducer,
+    composeWithDevTools(applyMiddleware(sagaMiddleware as SagaMiddleware<AppState>,logger))
+)
+
+sagaMiddleware.run(rootSaga)
