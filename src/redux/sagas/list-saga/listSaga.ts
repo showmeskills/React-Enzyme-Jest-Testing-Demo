@@ -12,7 +12,7 @@ import {
 } from "../../actions/list-actions";
 
 
-export function * get_ALl_Lists(){
+export function * get_ALl_Lists():any{
     try{
             yield put(getAllListsStart())
             const result:AxiosResponse<List[]> = yield call(getAllLists,"posts");

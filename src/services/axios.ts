@@ -1,12 +1,22 @@
 import axios from "axios";
 
-export const BASE_URL = "https://jsonplaceholder.typicode.com/"
-export const request = axios.create({
+const BASE_URL = "https://jsonplaceholder.typicode.com/"
+const request = axios.create({
     baseURL: BASE_URL
 })
 
 export const getAllLists = request.get;
 
+const getAllListsTest = async()=>{
+    let result;
+    try {
+         result = await axios.get(`${BASE_URL}posts?_limit=1`);
+        
+    } catch (e) {
+        result = [];
+    }
+    return result;
+}
 export const fetchList = async () => {
     try {
         return await axios.get(`${BASE_URL}posts?_limit=1`);
@@ -14,3 +24,5 @@ export const fetchList = async () => {
         return [];
     }
 }
+
+export { BASE_URL, request,getAllListsTest };
