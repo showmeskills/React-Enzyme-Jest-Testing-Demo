@@ -64,6 +64,7 @@
     "@babel/preset-typescript": "^7.15.0",
     "@types/axios": "^0.14.0",
     "@types/jest": "^27.0.1",
+    "@types/moxios": "^0.4.12",
     "@types/react-test-renderer": "^17.0.1",
     "@types/sinon": "^10.0.4",
     "babel-jest": "^27.1.0",
@@ -73,6 +74,7 @@
     "jest-enzyme": "^7.1.2",
     "jest-mock-axios": "^4.4.0",
     "jest-watch-typeahead": "^0.6.4",
+    "moxios": "^0.4.0",
     "react-test-renderer": "^17.0.2",
     "sinon": "^11.1.2"
   }

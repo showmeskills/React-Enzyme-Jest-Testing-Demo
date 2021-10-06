@@ -8,10 +8,8 @@ import { Header } from "./components/header";
 import { HeaderLine } from "./components/headerline";
 import { HeaderLineContainer } from "./components/headerline/headerlineStyle";
 import { HeaderContainer } from "./components/header/headerStyle";
-const setUp = (props = { }) => {
-  const component = shallow(<App {...props} />)
-  return component;
-}
+import { Provider } from 'react-redux';
+import { store } from './redux/rootStore';
 
 interface ItempArr {
   fName: string,
@@ -31,9 +29,21 @@ const setUpHeaderLine = (props: HeaderLineProps) => {
   return component;
 }
 
+const setUp = (props = { }) => {
+  const component = shallow(
+    <Provider store={store}>
+      <App {...props} />
+    </Provider>
+  )
+  return component;
+}
 describe('renders app', () => {
   it("should show a app", () => {
-    const component = (<App />);
+    const component = (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
     const tree = renderer.create(component).toJSON();
     expect(tree).toMatchSnapshot();
   })
@@ -43,10 +53,13 @@ describe('renders app', () => {
       component = setUp();
     })
     it("should app to render without errors", () => {
-      const app = component.find(AppContainer);
+      const app = component.find(App);
       expect(app.length).toBe(1);
-      const appContainer = findByTestAttr(component, "appContainer")
-      expect(appContainer.length).toBe(1);
+      // console.log(pp.length)
+      // const app = component.find(AppContainer);
+      // expect(app.length).toBe(1);
+      // const appContainer = findByTestAttr(component, "appContainer")
+      // expect(appContainer.length).toBe(1);
     })
   })
 
@@ -61,7 +74,6 @@ describe('renders app', () => {
     //all declarations should pass function  const component = shallow(<Header {...props}/>) first
     beforeEach(() => {
       component = setUp();
-
     })
 
     it("should render without errors", () => {

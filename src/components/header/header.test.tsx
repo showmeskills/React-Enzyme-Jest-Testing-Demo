@@ -1,5 +1,6 @@
 import React from 'react';
 import {shallow,ShallowWrapper} from "enzyme";
+import renderer from "react-test-renderer";
 import Header from "./header";
 import {HeaderContainer} from "./headerStyle";
 import {findByTestAttr} from "../../Utils/index"
@@ -16,6 +17,12 @@ describe('Header Component', () => {
     beforeEach(() => { 
         component = setUp();
         
+    })
+    it("snapshot",()=>{
+        const props = {};
+        const component = (<Header {...props}/>);
+        const tree = renderer.create(component).toJSON();
+        expect(tree).toMatchSnapshot();
     })
 
     it("should render without errors",()=>{  

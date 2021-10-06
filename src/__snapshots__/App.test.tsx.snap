@@ -37,15 +37,12 @@ exports[`renders app should show a app 1`] = `
 
 .c2 {
   border: none;
-  width: 100px;
+  width: 200px;
   padding: 12px 6px;
   background-color: pink;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 500;
-}
-
-.c3 {
-  list-style-type: none;
+  border-radius: 10px;
 }
 
 .c0 .main {
@@ -96,18 +93,11 @@ exports[`renders app should show a app 1`] = `
     </div>
     <button
       className="c2"
+      data-test="buttonComponent"
+      onClick={[Function]}
     >
       Click Me
     </button>
-    <ul
-      className="c3"
-    >
-      <li
-        className=""
-      >
-        1
-      </li>
-    </ul>
   </section>
 </div>
 `;

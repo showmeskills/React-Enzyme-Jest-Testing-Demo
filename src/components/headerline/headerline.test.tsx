@@ -1,4 +1,5 @@
 import React from 'react';
+import renderer from "react-test-renderer";
 import { shallow, ShallowWrapper } from 'enzyme';
 import HeaderLine from './headerline';
 import { findByTestAttr } from "../../Utils";
@@ -23,7 +24,22 @@ const setUp = (props: HeaderLineProps) => {
 }
 
 describe('HeaderLine Component', () => {
-
+    it("snapshot",()=>{
+        const props: HeaderLineProps = {
+            header: "Test Header",
+            desc: "Test Dest",
+            tempArr: [{
+                fName: "Test fName",
+                lName: "Test lName",
+                email: "Test email",
+                age: 0,
+                onlineStatus: true,
+            }]
+        }
+        const component = (<HeaderLine {...props}/>);
+        const tree = renderer.create(component).toJSON();
+        expect(tree).toMatchSnapshot();
+    })
     describe('have props', () => {
         let component: ShallowWrapper;
         beforeEach(() => {

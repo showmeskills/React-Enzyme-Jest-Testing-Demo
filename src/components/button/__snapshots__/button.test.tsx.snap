@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component should show a button 1`] = `
+.c0 {
+  border: none;
+  width: 200px;
+  padding: 12px 6px;
+  background-color: pink;
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+<button
+  className="c0"
+  data-test="buttonComponent"
+  onClick={[Function]}
+>
+  Example Button Text
+</button>
+`;

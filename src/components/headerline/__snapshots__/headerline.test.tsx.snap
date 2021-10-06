@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderLine Component snapshot 1`] = `
+<div
+  className=""
+  data-test="HeadlineComponent"
+>
+  <h1
+    data-test="header"
+  >
+    Test Header
+  </h1>
+  <p
+    data-test="desc"
+  >
+    Test Dest
+  </p>
+</div>
+`;

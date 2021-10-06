@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List component should have a snapshot 1`] = `
+.c0 {
+  list-style-type: none;
+}
+
+<ul
+  className="c0"
+  data-test="ulComponent"
+>
+  <li
+    className=""
+    data-test="liComponent"
+  >
+    <h2
+      data-test="componentTitle"
+    >
+      Example title
+    </h2>
+    <div
+      data-test="componentDesc"
+    >
+      Some text
+    </div>
+  </li>
+</ul>
+`;

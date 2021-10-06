@@ -5,7 +5,7 @@ describe("list-reducer should", () => {
     it("return default state", () => {
         const state = {
             loading: false,
-            list: [],
+            payload: [],
             error: ""
         };
         const newState = listReducer(defaultState, {});
@@ -14,7 +14,7 @@ describe("list-reducer should", () => {
     it("return a new state if get lists start",()=>{
         const state = {
             loading: true,
-            list: [],
+            payload: [],
             error: ""
         };
         const newState = listReducer(state,{
@@ -28,7 +28,7 @@ describe("list-reducer should", () => {
     it("return a new state if get lists success",()=>{
         const state = {
             loading:false,
-            list:[{
+            payload:[{
                 id:"Test1",
                 userId:"Test1",
                 body:"Test1",
@@ -39,7 +39,7 @@ describe("list-reducer should", () => {
         const newState = listReducer(state,{
             type:ListActionsTypes.GET_LISTS_SUCCESS,
             loading:state.loading,
-            payload:state.list,
+            payload:state.payload,
             error:state.error
         })
         expect(newState).toEqual(state);
@@ -47,7 +47,7 @@ describe("list-reducer should", () => {
     it("return a new state if get lists failed",()=>{
         const state = {
             loading:false,
-            list:[],
+            payload:[],
             error:"Test error"
         }
         const newState = listReducer(state,{
@@ -61,7 +61,7 @@ describe("list-reducer should", () => {
     it("return a new state if get spec lists start",()=>{
         const state = {
             loading: true,
-            list: [],
+            payload: [],
             error: ""
         };
         const newState = listReducer(state,{
@@ -75,7 +75,7 @@ describe("list-reducer should", () => {
     it("return a new state if get spec lists success",()=>{
         const state = {
             loading: false,
-            list:[{
+            payload:[{
                 id:"Test1",
                 userId:"Test1",
                 body:"Test1",
@@ -86,7 +86,7 @@ describe("list-reducer should", () => {
         const newState = listReducer(state,{
             type:ListActionsTypes.GET_SPEC_LIST_START,
             loading:false,
-            payload:state.list,
+            payload:state.payload,
             error:""
         });
         expect(newState).toEqual(state);
@@ -94,7 +94,7 @@ describe("list-reducer should", () => {
     it("return a new state if get spec lists failed",()=>{
         const state = {
             loading: false,
-            list: [],
+            payload: [],
             error: "Test error"
         };
         const newState = listReducer(state,{
