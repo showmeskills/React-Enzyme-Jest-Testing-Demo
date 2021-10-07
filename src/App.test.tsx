@@ -3,13 +3,14 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import renderer from 'react-test-renderer';
 import App from './App';
 import { AppContainer } from "./AppStyle";
-import { findByTestAttr } from "./Utils";
+import { findByTestAttr,testStore } from "./Utils";
 import { Header } from "./components/header";
 import { HeaderLine } from "./components/headerline";
 import { HeaderLineContainer } from "./components/headerline/headerlineStyle";
 import { HeaderContainer } from "./components/header/headerStyle";
 import { Provider } from 'react-redux';
-import { store } from './redux/rootStore';
+
+
 
 interface ItempArr {
   fName: string,
@@ -29,16 +30,19 @@ const setUpHeaderLine = (props: HeaderLineProps) => {
   return component;
 }
 
-const setUp = (props = { }) => {
-  const component = shallow(
+const setUp = (props = {}) => {
+  const store = testStore(props) 
+  const component = shallow( 
     <Provider store={store}>
-      <App {...props} />
+      <App {...props}/>
     </Provider>
-  )
+  ).childAt(0).dive();
+  console.log(component.debug())
   return component;
 }
 describe('renders app', () => {
   it("should show a app", () => {
+    const store = testStore() 
     const component = (
       <Provider store={store}>
         <App />
@@ -50,16 +54,23 @@ describe('renders app', () => {
   describe('app container', () => {
     let component: ShallowWrapper;
     beforeEach(() => {
-      component = setUp();
+      const initialState={
+        listReducer:[
+          {
+            userId:"text userId",
+            id:"text id",
+            title:"example title",
+            body:"example body"
+          }
+        ]
+      }
+      component = setUp(initialState);
     })
     it("should app to render without errors", () => {
-      const app = component.find(App);
-      expect(app.length).toBe(1);
-      // console.log(pp.length)
-      // const app = component.find(AppContainer);
-      // expect(app.length).toBe(1);
-      // const appContainer = findByTestAttr(component, "appContainer")
-      // expect(appContainer.length).toBe(1);
+      const appComponent = component.find(AppContainer);
+      expect(appComponent.length).toBe(1);
+      const appContainer = findByTestAttr(component, "appContainer")
+      expect(appContainer.length).toBe(1);
     })
   })
 
