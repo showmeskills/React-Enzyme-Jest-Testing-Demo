@@ -52,7 +52,7 @@ describe('renders app', () => {
     expect(tree).toMatchSnapshot();
   })
   describe('app container', () => {
-    let component: ShallowWrapper;
+    let component: ShallowWrapper<any,any,any>;
     beforeEach(() => {
       const initialState={
         listReducer:[
@@ -71,6 +71,17 @@ describe('renders app', () => {
       expect(appComponent.length).toBe(1);
       const appContainer = findByTestAttr(component, "appContainer")
       expect(appContainer.length).toBe(1);
+    })
+    it("exampleMethod_updatesState method should update state as expected",()=>{
+      const classInstance = component.instance();
+      classInstance.exampleMethod_updatesState();
+      const newState = classInstance.state.hideBtn;
+      expect(newState).toBe(true);
+    })
+    it("exampleMethod_returnsAValue method should return value as expected",()=>{
+      const classInstance = component.instance();
+      const value = classInstance.exampleMethod_returnsAValue(1);
+      expect(value).toBe(2);
     })
   })
 
