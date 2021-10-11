@@ -11,31 +11,30 @@ const setUp = (props:ButtonProps)=>{
 }
 
 describe("Button Component",()=>{
+    const props:ButtonProps = {
+        buttonText:"Example Button Text",
+        emitEvent:()=>{}
+    };
     it("should show a button", () => {
-        const props:ButtonProps = {
-            buttonText:"Example Button Text",
-            emitEvent:()=>{}
-        };
+  
         const component = (<SharedButton {...props}/>);
         const tree = renderer.create(component).toJSON();
         expect(tree).toMatchSnapshot();
       })
     describe("Checking PropTypes",()=>{
         it("Should Not Throw a warning",()=>{
-            const expectedProps:ButtonProps = {
-                buttonText:"Example Button Text",
-                emitEvent:()=>{}
-            };
-            const propsError = checkProps(SharedButton,expectedProps);
+            const propsError = checkProps(SharedButton,props);
             expect(propsError).toBeUndefined();
         })
     })
     describe("Renders",()=>{
         let wrapper:ShallowWrapper
+        let mockFunc:any;
         beforeEach(()=>{
+            mockFunc = jest.fn();
             const props:ButtonProps = {
                 buttonText:"Example Button Text",
-                emitEvent:()=>{}
+                emitEvent:mockFunc
             }
             wrapper = setUp(props)
         })
@@ -45,6 +44,12 @@ describe("Button Component",()=>{
             expect(btnContainer.length).toBe(1);
             const button = findByTestAttr(wrapper,"buttonComponent");
             expect(button.length).toBe(1);
+        })
+        it("Should emit callback on click event",()=>{
+            const button = findByTestAttr(wrapper,"buttonComponent");
+            button.simulate("click");
+            const callback = mockFunc.mock.calls.length;
+            expect(callback).toBe(1);
         })
         
     })

@@ -45,15 +45,17 @@ class App extends PureComponent<PropsWithChildren<any>>{
     }
 }
 
+
+
 // function App() {
 //   const header = "Posts";
 //   const desc = "Click the button to render posts!";
 //   const buttonText = "Click Me";
-//   const dispatch =useDispatch();
+//   const dispatch = useDispatch();
 //   const handleRequestSpecLists=(length:number)=>dispatch({type:ListActionsTypes.GET_SPEC_LIST,length})
 //   const list = useSelector((state:AppState)=>state.listReducer.payload);
 //   const emitEvent = (length:number)=>handleRequestSpecLists(length);
-
+ 
 //   return (
 //     <AppContainer data-test="appContainer">
 //       <Header />
@@ -78,4 +80,4 @@ const mapDispatchToProps = (dispatch:Dispatch)=>({
 })
 
 
-export default App;
+export default connect(mapStateToProps,mapDispatchToProps)(App);

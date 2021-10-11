@@ -9,6 +9,8 @@ import { HeaderLine } from "./components/headerline";
 import { HeaderLineContainer } from "./components/headerline/headerlineStyle";
 import { HeaderContainer } from "./components/header/headerStyle";
 import { Provider } from 'react-redux';
+import * as reactRedux from"react-redux";
+
 
 
 
@@ -33,14 +35,12 @@ const setUpHeaderLine = (props: HeaderLineProps) => {
 const setUp = (props = {}) => {
   const store = testStore(props) 
   const component = shallow( 
-    <Provider store={store}>
-      <App {...props}/>
-    </Provider>
+      <App store={store}/>
   ).childAt(0).dive();
-  console.log(component.debug())
   return component;
 }
 describe('renders app', () => {
+
   it("should show a app", () => {
     const store = testStore() 
     const component = (

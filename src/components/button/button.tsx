@@ -4,6 +4,7 @@ import { PropsWithChildren,Fragment,Component } from "react";
 import {BtnContainer} from "./buttonStyle";
 import PropTypes from 'prop-types';
 
+
 export interface ButtonProps{
     buttonText:string
     emitEvent(length:number):void
